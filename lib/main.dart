@@ -16,7 +16,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
       appBar: new AppBar(
         iconTheme: new IconThemeData(color: Colors.black),
@@ -25,12 +24,22 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                new Text('Site Survey',style: new TextStyle(color:Colors.black,fontSize: 24)),
-
+                Row(
+                  children: <Widget>[
+                    new Icon(Icons.photo),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: new Text('Site Survey',
+                          style:
+                              new TextStyle(color: Colors.black, fontSize: 24)),
+                    ),
+                  ],
+                ),
                 new Container(
-                  padding:EdgeInsets.only(left: 32.0),
+                  padding: EdgeInsets.only(left: 32.0),
                   child: new Row(
                     children: <Widget>[
                       new GestureDetector(
@@ -41,131 +50,182 @@ class _HomeState extends State<Home> {
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text("Task",style: new TextStyle(color: Colors.black,fontSize: 22))
+                              Text("Task",
+                                  style: new TextStyle(
+                                      color: Colors.black, fontSize: 22))
                             ],
                           ),
                         ),
                         onTap: () => debugPrint('Report Clicked'),
                       ),
-
                       new GestureDetector(
                         child: new Container(
-                          padding:EdgeInsets.only(left: 32.0),
+                          padding: EdgeInsets.only(left: 32.0),
                           child: new Row(
                             children: <Widget>[
-                              Text("Report",style: new TextStyle(color:Colors.black,fontSize: 22))
+                              Text("Report",
+                                  style: new TextStyle(
+                                      color: Colors.black, fontSize: 22))
                             ],
                           ),
                         ),
                         onTap: () => debugPrint('Report Clicked'),
                       ),
-
                       new GestureDetector(
                         child: new Container(
-                          padding:EdgeInsets.only(left: 32.0),
+                          padding: EdgeInsets.only(left: 32.0),
                           child: new Row(
                             children: <Widget>[
-                              Text("Help",style: new TextStyle(color:Colors.black,fontSize: 22))
+                              Text("Help",
+                                  style: new TextStyle(
+                                      color: Colors.black, fontSize: 22))
                             ],
                           ),
                         ),
                         onTap: () => debugPrint('Help Clicked'),
                       ),
-
-
                     ],
                   ),
                 ),
-                
               ],
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new IconButton(
                     icon: new Image.asset('images/profile_image.jpeg'),
                     onPressed: () => debugPrint('Pressed!')),
-                new Text(
-                    'Peter',
-                    style: new TextStyle(color: Colors.black, fontSize: 14.0)
-                ),
+                new Text('Peter',
+                    style: new TextStyle(color: Colors.black, fontSize: 14.0)),
               ],
             ),
-
           ],
         ),
       ),
-
-      drawer: new Drawer(
-        child: new ListView(
-          padding: EdgeInsets.zero,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Row(
           children: <Widget>[
-            new Text(
-              '',
-              style: new TextStyle(
-                  fontSize: 18.0,
-                  fontStyle: FontStyle.normal
-              ),),
-            ListTile(
-              title: Text(
-                'All Tasks (7)', style: new TextStyle(fontSize: 22.0),),
-              onTap: () => Navigator.pop(context),
+            Container(
+              width: 220,
+              height: double.infinity,
+              color: Colors.white,
+              child: new ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  new Text(
+                    '',
+                    style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.normal),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'All Tasks (7)',
+                      style: new TextStyle(fontSize: 22.0),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'All Tasks (7)',
+                      style: new TextStyle(fontSize: 22.0),
+                    ),
+                  ),
+                  new GestureDetector(
+                    child: new Container(
+                      height: 40,
+                      width: double.infinity,
+                      color: Colors.black26,
+                      padding: EdgeInsets.only(left: 32.0),
+                      child: new Row(
+                        children: <Widget>[
+                          Text(
+                            "Todo (4)",
+                            style: new TextStyle(fontSize: 20.0),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  new InkWell(
+                    child: new Container(
+                      height: 40,
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 32.0),
+                      child: new Row(
+                        children: <Widget>[
+                          Text(
+                            "Submitted (1)",
+                            style: new TextStyle(fontSize: 20.0),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  new InkWell(
+                    child: new Container(
+                      height: 40,
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 32.0),
+                      child: new Row(
+                        children: <Widget>[
+                          Text(
+                            "Done (1)",
+                            style: new TextStyle(fontSize: 20.0),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-
-            ExpansionTile(
-                title: Text("My Tasks (7)", style: new TextStyle(fontSize: 20.0),),
-            children: <Widget>[
-              new GestureDetector(
-                child: new Container(
-                  height: 40,
-                  width: double.infinity,
-                  color: Colors.black26,
-                  padding: EdgeInsets.only(left: 32.0),
-                  child: new Row(
-                    children: <Widget>[
-                      Text("Todo (4)", style: new TextStyle(fontSize: 20.0),)
-                    ],
-                  ),
+            Expanded(
+              child: Container(
+                color: Colors.blue,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: <Widget>[
+                    Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.red,
+                    ),
+                    Table(
+                      border: TableBorder.all(),
+                      children: [
+                        TableRow(children: [
+                          Text("Title"),
+                          Text("Title"),
+                          Text("Title"),
+                        ]),
+                        TableRow(children: [
+                          Text("a"),
+                          Text("b"),
+                          Text("c"),
+                        ]),
+                        TableRow(children: [
+                          Text("a"),
+                          Text("b"),
+                          Text("c"),
+                        ]),
+                        TableRow(children: [
+                          Text("a"),
+                          RaisedButton(
+                            onPressed: () {},
+                            child: Text("Button"),
+                          ),
+                          Text("c"),
+                        ]),
+                      ],
+                    ),
+                  ],
                 ),
-                onTap: () => Navigator.pop(context),
               ),
-
-              new InkWell(
-                child: new Container(
-                  height: 40,
-                  width: double.infinity,
-                  padding: EdgeInsets.only(left: 32.0),
-                  child: new Row(
-                    children: <Widget>[
-                      Text("Submitted (1)", style: new TextStyle(fontSize: 20.0),)
-                    ],
-                  ),
-                ),
-                onTap: () => Navigator.pop(context),
-              ),
-
-              new InkWell(
-                child: new Container(
-                  height: 40,
-                  width: double.infinity,
-                  padding: EdgeInsets.only(left: 32.0),
-                  child: new Row(
-                    children: <Widget>[
-                      Text("Done (1)", style: new TextStyle(fontSize: 20.0),)
-                    ],
-                  ),
-                ),
-                onTap: () => Navigator.pop(context),
-              ),
-
-
-            ],),
-
+            )
           ],
         ),
       ),
-
 
 //     body: new Container(
 //       decoration: BoxDecoration(
@@ -253,7 +313,6 @@ class _HomeState extends State<Home> {
 //
 //
 //     ),
-
     );
 
 //    return new DefaultTabController(
